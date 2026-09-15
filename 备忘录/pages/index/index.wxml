@@ -1,0 +1,91 @@
+<view class="container">
+  <view bindtap="bindViewTap" class="header" style="position: relative; left: 2rpx; top: 0rpx; text-align: center; font-size: 40rpx; color: #ae9e84; margin-bottom: 40px; width: 100%; height: 50px;">
+    欢迎使用蛋黄备忘录
+  </view>
+  
+  <!-- 表单输入部分 -->
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="edit-wrap" style="position: relative; left: 1rpx; top: 0rpx; height: 285rpx; display: flex; box-sizing: border-box; width: 666rpx; align-items: center;">
+      <view class="input-wrap" style="width: 100%; display: flex; flex-direction: column; box-sizing: border-box;">
+        <input class="ipt-main" type="text" value="{{curIpt}}" returnKeyType='send' placeholder="请输入待做的事" bindinput='iptChange' style="margin-bottom: 20rpx;" />
+        <view class="time-container" wx:if="{{curIpt}}" style="display: flex; justify-content: space-between; width: 100%;">
+          <view class="flex-row flex-time">
+            <picker mode="time" value="{{curBegin}}" bindchange='beginChange' class="pick-time time">
+              <text>开始时间：{{curBegin}}</text>
+            </picker>  
+            <picker mode="time" value="{{curFinish}}" bindchange='finishChange' class="pick-time time">
+              <text>结束时间：{{curFinish}}</text>
+            </picker>  
+          </view>
+          <label class="time">
+            <switch class="switch" checked="{{isReminder}}" bindchange="switch1Change" />提醒
+          </label>
+        </view>
+      </view>
+      <view class="flex-row" wx:if="{{curIpt}}" style="margin-top: 20rpx;">
+        <button class="btn btn-submit" form-type="submit" hover-class="btn-hover">提交</button>
+        <button class="btn btn-cancel" form-type="reset">清空</button>
+      </view>
+    </view>
+  </form>
+  
+  <!-- 备忘录列表 -->
+  <scroll-view scroll-y="true" style="height: 612rpx; width: 666rpx; display: block; box-sizing: border-box; left: 0rpx; top: 85rpx; position: relative" class="list-wrap">
+    <view wx:if="{{lists.length > 0}}">
+      <view wx:for="{{lists}}" wx:key="id" wx:for-index="index" wx:if="{{showAll || (!showAll && !item.done)}}" class="{{item.done ? 'done list' : 'list'}}" style="position: relative; left: 2rpx; top: 35rpx;">
+        <text>{{index+1}}:</text>
+        <text data-id="{{index}}" class="cnt" bindtap="toChange">{{item.content}}</text>
+        
+        <!-- 编辑模式 -->
+        <view hidden="{{!item.editing}}" class="edit-wrap" style="position: relative; left: 13rpx; top: -1rpx">
+          <input class="ipt-edit" value="{{item.curVal}}" data-id="{{index}}" bindinput='iptEdit' />
+          <view class="flex-row flex-time">
+            <picker mode="time" value='{{item.beginTime}}' bindchange='editBeginChange' data-id="{{index}}" class="pick-time time">
+              <text>开始时间：{{item.beginTime}}</text>
+            </picker>
+            <picker mode="time" value='{{item.finishTime}}' bindchange='editFinishChange' data-id="{{index}}" class="pick-time time">
+              <text>结束时间：{{item.finishTime}}</text>
+            </picker>
+          </view>
+          <view class="flex-row">
+            <label class="time" style="width: 181rpx; display: block; box-sizing: border-box">
+              <switch class="switch" checked="{{item.isReminder}}" bindchange="editSwitch1Change" data-id="{{index}}" />提醒
+            </label>
+            <button class="btn btn-edit" data-id="{{index}}" bindtap="saveEdit">保存修改</button>
+          </view>
+        </view>
+        
+        <!-- 显示时间 -->
+        <text class="time"> {{item.beginTime}}-{{item.finishTime}}</text>
+        
+        <!-- 完成/删除图标 -->
+        <icon class="ico-done" bindtap="setDone" data-id="{{index}}" type="success_no_circle" size='18' color="{{item.done?'#d7d7d7':'#6fa6cf'}}" />
+        <icon class="ico-delete" bindtap="toDelete" data-id="{{index}}" type='cancel' size='20' color="#6fa6cf" />
+      </view>
+    </view>
+    
+    <!-- 当列表为空时显示的空白占位符 -->
+    <view wx:else class="list" style="position: relative; left: 2rpx; top: 35rpx;">
+    </view>
+  </scroll-view>
+  
+  <!-- 页脚操作 -->
+  <view class="footer" style="position: absolute; bottom: 0; left: 45rpx; right: 0; display: flex; justify-content: space-between; padding: 10rpx; background-color: #fff; box-sizing: border-box; width: 666rpx; height: 54rpx; top: 1268rpx">
+    <view class="ft-area">
+      <text>{{lists.length}}条</text>
+    </view>
+    <view class="ft-area ft-mid" style="width: 416rpx; height: 39rpx; display: block; box-sizing: border-box">
+      <text wx:if="{{showAll}}" bindtap="showUnfinished" class="ft-action">显示未完成</text>
+      <text wx:else bindtap="showAll" class="ft-action">显示全部</text>
+    </view>
+    <view class="ft-area">
+      <text bindtap="doneAll" class="ft-action">全部完成</text>
+      <text bindtap="deleteAll" class="ft-action">全删</text>
+    </view>
+  </view>
+  
+  <!-- 保存按钮 -->
+  <view class="input-wrap mt" wx:if="{{lists.length>0}}" style="margin-top: 10rpx;">
+    <button class="btn btn-save" bindtap="saveData" style="position: relative; left: 0rpx; top: 127rpx">保存数据</button>
+  </view>
+</view>

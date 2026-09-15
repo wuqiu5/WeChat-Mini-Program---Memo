@@ -1,0 +1,36 @@
+/* logs.wxss */
+.log-item {
+  margin: 20rpx 0;
+  padding: 10rpx;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.log-date {
+  font-size: 24rpx;
+  color: #888;
+  margin-bottom: 10rpx;
+}
+
+.log-content {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.log-time {
+  font-size: 28rpx;
+  color: #555;
+  margin-bottom: 10rpx;
+}
+
+.log-reminder {
+  font-size: 28rpx;
+  color: #555;
+  margin-bottom: 10rpx;
+}
+
+.log-status {
+  font-size: 28rpx;
+  color: #555;
+}

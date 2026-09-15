@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "pages/index/index",  
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff9d00",
+    "navigationBarTitleText": "蛋黄备忘录"
+  }
+}

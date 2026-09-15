@@ -1,0 +1,15 @@
+<view class="container" style="height: 631rpx; display: flex; box-sizing: border-box">
+  <!-- 显示待办事项列表 -->
+  <scroll-view scroll-y="true" style="height: 1381rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -100rpx">
+    <view wx:for="{{logs}}" wx:key="index" class="log-item" style="margin: 20rpx 0; padding: 10rpx; border: 1px solid #ddd;">
+      <text class="log-date">{{item.date}}</text>
+      <text class="log-content">
+      {{index + 1}}. {{item.content}}</text><br />
+      <text class="log-time">
+      开始时间: {{item.beginTime}} - 结束时间: {{item.finishTime}}</text><br />
+      <text class="log-reminder">
+      提醒: {{item.isReminder ? '是' : '否'}}</text><br />
+      <text class="log-status" style="position: relative; left: 120rpx; top: 1rpx">状态: {{item.done ? '已完成' : '未完成'}}</text>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,265 @@
+/**index.wxss**/
+.header{
+  text-align: center;
+  font-size: 40rpx;
+  color: #ae9e84;
+  margin-bottom: 40px;
+  width:100%;
+  position: relative;
+  height:50px;
+}
+.header::after{
+  content:'TODOLIST';
+  position: absolute;
+  width: 24rem;
+  z-index: 1;
+  text-align: center;
+  color: rgba(225, 225, 225, 0.835);
+  font-size: 110rpx;
+  left: 0;
+  bottom:-55px;
+}
+
+.userinfo-nickname {
+  color: #a38e6d;
+}
+/*输入区域*/
+/* .input-wrap{  
+  margin: 20rpx 30rpx;
+} */
+.flex-row{
+  display: flex;
+  margin: 10rpx 0;
+  width: 670rpx;
+  -webkit-box-pack: justify;
+}
+ .pick-time{
+  flex:2;
+  text-align: center;
+  margin-right: 10rpx; /* 右边距 */
+} 
+.time{
+  color: #777;
+  font-size:12px;
+  margin-right: 0rpx; /* 右边距 */
+}
+.switch{
+  transform: scale(0.5);
+  vertical-align: middle;
+}
+ .btn{  
+  border-radius: 5px;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  display: block;
+  background: #6fa6cf;
+} 
+.btn-submit{
+  color: rgb(252, 250, 250);
+  flex: 1;
+  margin-right:10rpx;
+}
+.btn-hover{
+  background: #a2c7e2;
+}
+.btn-cancel{
+  background: rgb(253, 253, 253);
+}
+
+/* .ipt-main{
+  border: 1rpx solid rgb(255, 147, 6);
+  border-radius: 5px;
+  height: 80rpx;
+  padding: 10rpx 15px;
+  font-size: 30rpx;
+  width: 610rpx;
+  display: block;
+} */
+
+/*展示列表区域*/
+.list-wrap{
+	text-align:left;
+	width:670rpx;
+  margin: 0 auto;	
+  background: rgb(255, 255, 255);
+  border:1px solid #e2e2e2;
+  position:relative;
+  border-radius:0 0 5rpx 5rpx;
+}
+.list-wrap::after{
+  content:'';
+  position: absolute;
+  width: 98%;
+  height: 100%;
+  z-index: -1;
+  border: 1px solid #e6e6e6;
+  left: 1%;
+  bottom:-5px;
+  background: #fff;
+  border-radius:0 0 5rpx 5rpx;
+}
+.list-wrap::before{
+  content:'';
+  position: absolute;
+  width: 96%;
+  height: 100%;
+  z-index: -2;
+  border: 1px solid #e6e6e6;
+  left: 2%;
+  bottom:-9px;
+  background: rgb(255, 255, 255);
+  border-radius:0 0 5rpx 5rpx;
+}
+.list{
+  padding:10px;
+  position:relative;
+}
+.done{
+  background: #e6f1f8;
+  color:#ccc;
+}
+.ico-done{
+  position: absolute;
+  right: 80rpx;  
+}
+.done .ico-done{color: red}
+.ico-delete{
+	position:absolute;
+	right:10rpx;
+}	
+.red{
+  color: red;
+}
+.cnt{
+  width: 400rpx;
+}
+/*修改*/
+.edit-wrap{
+  position: absolute;
+  background: rgb(255, 255, 255);
+  left: 20px;
+  height: 100%;
+  width: 90%;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 6rpx;
+}
+.ipt-edit{
+  flex:1;
+  border: 1rpx solid #ddd;
+  border-radius: 3px;
+  padding: 5rpx;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+}
+.btn-edit{
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: rgb(255, 255, 255);
+  height: 60rpx;
+}
+
+/*列表地步操作区*/
+.footer{
+  display: flex;
+  justify-content:space-between;
+  font-size: 18rpx;
+  color: #a38e6d;
+  border-top: 1px solid #eee;
+}
+.ft-action{
+  color: #6fa6cf; 
+  margin:  15rpx;
+}
+.ft-area{  
+  padding: 20rpx;
+ text-align:center;
+}
+.ft-mid{
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  flex:1;
+}
+
+.mt{
+  margin-top: 100rpx;
+}
+.btn-save{
+  width:300rpx;
+  color: #fff;
+}
+page {
+  background-color: #fffde0; /* 淡黄色 */
+}
+
+.edit-wrap {
+  display: flex; /* 使用弹性盒布局 */
+  flex-direction: column; /* 垂直排列子元素 */
+  position: relative;
+  background: #fff;
+  padding: 0rpx;
+  margin-top: 15rpx;
+  width: 95%; /* 使编辑区域宽度为100% */
+}
+.switch {
+  transform: scale(0.8); /* 适当缩小开关大小 */
+  vertical-align: middle; /* 垂直居中对齐 */
+}
+.ipt-edit {
+  border: 1rpx solid #ddd;
+  border-radius: 3px;
+  padding: 6rpx;
+  margin-right: 6rpx;
+  font-size: 30rpx;
+  width: calc(90% - 5rpx); /* 减去内边距和右边距 */
+  margin-bottom: 20rpx;
+}
+.btn-edit {
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #fff;
+  height: 60rpx;
+  background: #6fa6cf; /* 按钮背景颜色 */
+  border: none; /* 无边框 */
+  border-radius: 5px; /* 圆角 */
+  width: 100rpx; /* 按钮宽度 */
+}
+ .time-picker-container {
+  display: flex; /* 使用弹性盒模型 */
+  flex-direction: row; /* 子元素水平排列 */
+  justify-content: center; /* 子元素两端对齐 */
+  align-items: center; /* 垂直居中对齐 */
+  margin-top: 30rpx; /* 增加顶部外边距 */
+} 
+.flex-time-container {
+  display: flex; /* 使用弹性盒布局 */
+  flex-direction: column; /* 子元素垂直排列 */
+  margin-top: 70rpx; /* 与输入框之间的间距 */
+}
+
+.flex-row {
+  display: flex; /* 弹性盒模型 */
+  margin: 2rpx 0; /* 子元素之间的间距 */
+}
+.input-wrap {
+  margin: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  align-items: center; /* 垂直居中对齐 */
+}
+
+/* 输入框样式 */
+.ipt-main {
+  border: 1rpx solid rgb(255, 147, 6);
+  border-radius: 5px;
+  height: 80rpx;
+  padding: 10rpx 15px;
+  font-size: 30rpx;
+  width: 90%; /* 调整宽度以适应容器 */
+  margin-bottom: 20rpx; /* 与时间选择器之间的间距 */
+}
+
+
+
